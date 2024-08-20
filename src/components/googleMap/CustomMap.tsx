@@ -16,7 +16,7 @@ const CustomMap: React.FC = () => {
   }, [map]);
 
   return (
-    <div className="map-container w-full h-full md:h-[470px]">
+    <div className="map-container w-full h-full md:h-[420px]">
       <Map
         // style={{ borderRadius: "20px" }}
         defaultZoom={13}

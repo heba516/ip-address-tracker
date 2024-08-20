@@ -20,7 +20,7 @@ const Details = () => {
       lg:after:content-[''] lg:after:absolute 
       after:right-0 after:top-1 after:h-[70px] 
       after:w-[2px] after:bg-gray-400 
-      pr-4 md:pr-10"
+      pr-4 md:pr-14"
       >
         <h3 className="mb-2 font-bold text-gray-400">IP ADDRESS</h3>
         <p className="font-semibold text-xl">192.221.311.121</p>
@@ -31,7 +31,7 @@ const Details = () => {
       lg:after:content-[''] lg:after:absolute 
       after:right-0 after:top-1 after:h-[70px] 
       after:w-[2px] after:bg-gray-400 
-      pr-4 md:pr-10"
+      pr-4 md:pr-14"
       >
         <h3 className="mb-2 font-bold text-gray-400">LOCATION</h3>
         <p className="font-semibold text-xl">Egypt</p>
@@ -43,7 +43,7 @@ const Details = () => {
       lg:after:content-[''] lg:after:absolute 
       after:right-0 after:top-1 after:h-[70px] 
       after:w-[2px] after:bg-gray-400 
-      pr-4 md:pr-10"
+      pr-4 md:pr-14"
       >
         {" "}
         <h3 className="mb-2 font-bold text-gray-400">TIME ZONE</h3>
