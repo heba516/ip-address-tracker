@@ -1,11 +1,22 @@
-const Search = () => {
+interface Iprops {
+  setIp: (ip: string) => void;
+}
+
+const Search = ({ setIp }: Iprops) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const ip = formData.get("ip") as string;
+    setIp(ip);
+  };
+
   return (
-    <form className="max-w-lg mx-auto mt-10 mb-24 px-5 ">
+    <form className="max-w-lg mx-auto mt-10 mb-24 px-5" onSubmit={handleSubmit}>
       <div className="flex">
         <div className="relative w-full">
           <input
             type="search"
-            id="search"
+            name="ip"
             className="block p-4 w-full z-20 text-md rounded-lg border-s-gray-50 border-s-2 border focus:outline-none placeholder:text-lg"
             placeholder="Search for any ip address or domain"
             required

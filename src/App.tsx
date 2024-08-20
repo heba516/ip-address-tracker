@@ -3,7 +3,9 @@ import Search from "./components/Search";
 import Details from "./components/Details";
 import CustomMap from "./components/googleMap/CustomMap";
 import { APIProvider } from "@vis.gl/react-google-maps";
+import { useState } from "react";
 function App() {
+  const [ip, setIp] = useState<string>("");
   return (
     <>
       <div
@@ -26,11 +28,11 @@ function App() {
       "
       >
         <h1 className="text-white text-3xl font-bold">Ip Address Tracker</h1>
-        <Search />
+        <Search setIp={setIp} />
         <Details />
         <div className="app h-[78%] sm:h-[75%]">
           <APIProvider apiKey={"AIzaSyDsgMXrrzbRALUXEPYcLQpguzGZ5EbcWLA"}>
-            <CustomMap />
+            <CustomMap ipAdd={ip} />
           </APIProvider>
         </div>
       </div>
