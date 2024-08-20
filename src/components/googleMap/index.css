@@ -1,0 +1,5 @@
+.app {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
