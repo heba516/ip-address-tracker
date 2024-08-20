@@ -9,9 +9,9 @@ const Details = () => {
     w-[85%] md:w-[70%] lg:w-[60%] 
     rounded-lg 
     shadow-lg 
-    z-50 flex 
-    flex-col lg:flex-row items-start justify-between 
-    p-6 md:p-8 
+    z-50 
+    flex flex-col lg:flex-row items-start justify-between 
+    p-6 md:px-8 
     space-y-4 md:space-y-0"
     >
       <div

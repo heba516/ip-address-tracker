@@ -1,9 +1,8 @@
-import { APIProvider } from "@vis.gl/react-google-maps";
-import CustomMap from "./components/googleMap/CustomMap";
 import "./App.css";
 import Search from "./components/Search";
 import Details from "./components/Details";
-
+import CustomMap from "./components/googleMap/CustomMap";
+import { APIProvider } from "@vis.gl/react-google-maps";
 function App() {
   return (
     <>
@@ -27,11 +26,8 @@ function App() {
       "
       >
         <h1 className="text-white text-3xl font-bold">Ip Address Tracker</h1>
-
         <Search />
-
         <Details />
-
         <div className="app h-[78%] sm:h-[75%]">
           <APIProvider apiKey={"AIzaSyDsgMXrrzbRALUXEPYcLQpguzGZ5EbcWLA"}>
             <CustomMap />
