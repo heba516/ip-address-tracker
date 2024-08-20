@@ -6,6 +6,12 @@ import { APIProvider } from "@vis.gl/react-google-maps";
 import { useState } from "react";
 function App() {
   const [ip, setIp] = useState<string>("");
+  const [details, setDetails] = useState<{ country: string; timezone: string }>(
+    {
+      country: "",
+      timezone: "",
+    }
+  );
   return (
     <>
       <div
@@ -29,10 +35,10 @@ function App() {
       >
         <h1 className="text-white text-3xl font-bold">Ip Address Tracker</h1>
         <Search setIp={setIp} />
-        <Details />
+        <Details ip={ip} details={details} />
         <div className="app h-[78%] sm:h-[75%]">
           <APIProvider apiKey={"AIzaSyDsgMXrrzbRALUXEPYcLQpguzGZ5EbcWLA"}>
-            <CustomMap ipAdd={ip} />
+            <CustomMap ipAdd={ip} setDetails={setDetails} />
           </APIProvider>
         </div>
       </div>

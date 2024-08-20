@@ -5,17 +5,26 @@ import axios from "axios";
 
 interface Iprops {
   ipAdd: string;
+  setDetails: ({
+    country,
+    timezone,
+  }: {
+    country: string;
+    timezone: string;
+  }) => void;
 }
 
-const CustomMap = ({ ipAdd }: Iprops) => {
+const CustomMap = ({ ipAdd, setDetails }: Iprops) => {
   const [location, setLocations] = useState<{
     latitude: number;
     longitude: number;
     country: string;
+    timezone: string;
   }>({
     latitude: 51.509865,
     longitude: -0.118092,
     country: "",
+    timezone: "",
   });
   useEffect(() => {
     const getLocations = async () => {
@@ -25,10 +34,12 @@ const CustomMap = ({ ipAdd }: Iprops) => {
         latitude: data.latitude,
         longitude: data.longitude,
         country: data.country_name,
+        timezone: data.timezone,
       });
     };
 
     getLocations();
+    setDetails({ country: location.country, timezone: location.timezone });
   }, [ipAdd]);
 
   const [map, setMap] = useState<google.maps.Map | null>(null);

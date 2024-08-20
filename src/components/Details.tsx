@@ -1,4 +1,9 @@
-const Details = () => {
+interface Iprops {
+  ip: string;
+  details: { country: string; timezone: string };
+}
+
+const Details = ({ ip, details }: Iprops) => {
   return (
     <div
       className="absolute 
@@ -11,7 +16,7 @@ const Details = () => {
     shadow-lg 
     z-50 
     flex flex-col lg:flex-row items-start justify-between 
-    p-6 md:px-8 
+    p-6 md:py-8 md:px-16 
     space-y-4 md:space-y-0"
     >
       <div
@@ -23,7 +28,7 @@ const Details = () => {
       pr-4 md:pr-14"
       >
         <h3 className="mb-2 font-bold text-gray-400">IP ADDRESS</h3>
-        <p className="font-semibold text-xl">192.221.311.121</p>
+        <p className="font-semibold text-xl">{ip ? ip : "-"}</p>
       </div>
       <div
         className="relative 
@@ -34,8 +39,10 @@ const Details = () => {
       pr-4 md:pr-14"
       >
         <h3 className="mb-2 font-bold text-gray-400">LOCATION</h3>
-        <p className="font-semibold text-xl">Egypt</p>
-        <p className="text-xl font-semibold">10001</p>
+        <p className="font-semibold text-xl">
+          {details.country ? details.country : "-"}
+        </p>
+        {/* <p className="text-xl font-semibold">10001</p> */}
       </div>
       <div
         className="relative 
@@ -47,12 +54,14 @@ const Details = () => {
       >
         {" "}
         <h3 className="mb-2 font-bold text-gray-400">TIME ZONE</h3>
-        <p className="font-semibold text-xl">UTC -50:00</p>
+        <p className="font-semibold text-xl">
+          {details.timezone ? details.timezone : "-"}
+        </p>
       </div>
       <div className="text-start">
         <h3 className="mb-2 font-bold text-gray-400">ISP</h3>
         <p className="font-semibold text-xl">SpaceX</p>
-        <p className="text-xl font-semibold">Starlink</p>
+        {/* <p className="text-xl font-semibold">Starlink</p> */}
       </div>
     </div>
   );
