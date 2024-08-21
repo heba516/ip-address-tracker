@@ -1,110 +1,83 @@
-import React, { useState, useEffect } from "react";
-import { Map } from "@vis.gl/react-google-maps";
+import { useState, useEffect } from "react";
 import "./index.css";
 import axios from "axios";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 interface Iprops {
   ipAdd: string;
   setDetails: ({
     country,
     timezone,
+    isp,
   }: {
     country: string;
     timezone: string;
+    isp: string;
   }) => void;
 }
 
+const ChangeView = ({ center }: { center: [number, number] }) => {
+  const map = useMap();
+  map.setView(center, map.getZoom());
+  return null;
+};
+
 const CustomMap = ({ ipAdd, setDetails }: Iprops) => {
-  const [location, setLocations] = useState<{
-    latitude: number;
-    longitude: number;
-    country: string;
-    timezone: string;
-  }>({
-    latitude: 51.509865,
-    longitude: -0.118092,
+  const [location, setLocations] = useState({
+    latitude: 51.505,
+    longitude: -0.09,
     country: "",
     timezone: "",
   });
+
   useEffect(() => {
     const getLocations = async () => {
-      const { data } = await axios.get(`https://ipapi.co/${ipAdd}/json/`);
-      console.log("ip: " + data.ip);
+      const { data } = await axios.get(
+        `https://geo.ipify.org/api/v2/country,city?apiKey=at_hFC0ZciXyekWUStntaLOz6n3XZk0Q&ipAddress=${ipAdd}`
+      );
+
+      console.log("isp:" + data.isp);
+
       setLocations({
-        latitude: data.latitude,
-        longitude: data.longitude,
-        country: data.country_name,
-        timezone: data.timezone,
+        latitude: data.location.lat,
+        longitude: data.location.lng,
+        country: data.location.country,
+        timezone: data.location.timezone,
+      });
+      setDetails({
+        country: data.location.country,
+        timezone: data.location.timezone,
+        isp: data.isp,
       });
     };
 
     getLocations();
-    setDetails({ country: location.country, timezone: location.timezone });
-  }, [ipAdd]);
+  }, [ipAdd, setDetails]);
 
-  const [map, setMap] = useState<google.maps.Map | null>(null);
-  useEffect(() => {
-    if (map) {
-      new google.maps.marker.AdvancedMarkerElement({
-        position: { lat: location.latitude, lng: location.longitude },
-        map: map,
-        title: location.country,
-      });
-      map.setCenter({ lat: location.latitude, lng: location.longitude });
-    }
-  }, [map, location]);
+  const position: [number, number] = [location.latitude, location.longitude];
+
   return (
-    <div className="map-container w-full h-full md:h-[420px]">
-      <Map
-        // style={{ borderRadius: "20px" }}
-        defaultZoom={13}
-        defaultCenter={{ lat: location.latitude, lng: location.longitude }}
-        gestureHandling="greedy"
-        disableDefaultUI
-        onLoad={(map) => setMap(map)}
-      />
+    <div className="map-container w-full h-full md:h-[420px] overflow-hidden z-10">
+      <MapContainer
+        center={position}
+        zoom={13}
+        scrollWheelZoom={false}
+        style={{ height: "100vh", width: "100vw" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+        <ChangeView center={position} />
+      </MapContainer>
     </div>
   );
 };
-
-// import React from "react";
-// import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
-
-// // const libraries = ["places"];
-// const mapContainerStyle = {
-//   width: "100vw",
-//   height: "100vh",
-// };
-// const center = {
-//   lat: 7.2905715, // default latitude
-//   lng: 80.6337262, // default longitude
-// };
-
-// const CustomMap: React.FC = () => {
-//   const { isLoaded, loadError } = useLoadScript({
-//     googleMapsApiKey: "AIzaSyDsgMXrrzbRALUXEPYcLQpguzGZ5EbcWLA",
-//     // libraries,
-//   });
-
-//   if (loadError) {
-//     return <div>Error loading maps</div>;
-//   }
-
-//   if (!isLoaded) {
-//     return <div>Loading maps</div>;
-//   }
-
-//   return (
-//     <div className="app w-full h-full md:h-[420px]">
-//       <GoogleMap
-//         mapContainerStyle={mapContainerStyle}
-//         zoom={10}
-//         center={center}
-//       >
-//         <Marker position={center} />
-//       </GoogleMap>
-//     </div>
-//   );
-// };
 
 export default CustomMap;

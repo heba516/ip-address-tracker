@@ -1,6 +1,6 @@
 interface Iprops {
   ip: string;
-  details: { country: string; timezone: string };
+  details: { country: string; timezone: string; isp: string };
 }
 
 const Details = ({ ip, details }: Iprops) => {
@@ -42,7 +42,6 @@ const Details = ({ ip, details }: Iprops) => {
         <p className="font-semibold text-xl">
           {details.country ? details.country : "-"}
         </p>
-        {/* <p className="text-xl font-semibold">10001</p> */}
       </div>
       <div
         className="relative 
@@ -60,8 +59,7 @@ const Details = ({ ip, details }: Iprops) => {
       </div>
       <div className="text-start">
         <h3 className="mb-2 font-bold text-gray-400">ISP</h3>
-        <p className="font-semibold text-xl">SpaceX</p>
-        {/* <p className="text-xl font-semibold">Starlink</p> */}
+        <p className="font-semibold text-xl">{details.isp}</p>
       </div>
     </div>
   );

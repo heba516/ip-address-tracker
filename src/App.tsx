@@ -6,12 +6,15 @@ import { APIProvider } from "@vis.gl/react-google-maps";
 import { useState } from "react";
 function App() {
   const [ip, setIp] = useState<string>("");
-  const [details, setDetails] = useState<{ country: string; timezone: string }>(
-    {
-      country: "",
-      timezone: "",
-    }
-  );
+  const [details, setDetails] = useState<{
+    country: string;
+    timezone: string;
+    isp: string;
+  }>({
+    country: "",
+    timezone: "",
+    isp: "",
+  });
   return (
     <>
       <div
