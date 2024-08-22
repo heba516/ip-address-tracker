@@ -1,3 +1,6 @@
+import axios from "axios";
+import { useEffect } from "react";
+
 interface Iprops {
   setIp: (ip: string) => void;
 }
@@ -9,6 +12,16 @@ const Search = ({ setIp }: Iprops) => {
     const ip = formData.get("ip") as string;
     setIp(ip);
   };
+
+  const getData = async () => {
+    const res = await axios.get("https://api.ipify.org/?format=json");
+    console.log(res.data);
+    setIp(res.data.ip);
+  };
+
+  useEffect(() => {
+    getData();
+  }, [setIp]);
 
   return (
     <form className="max-w-lg mx-auto mt-10 mb-24 px-5" onSubmit={handleSubmit}>

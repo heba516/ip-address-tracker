@@ -4,6 +4,7 @@ import Details from "./components/Details";
 import CustomMap from "./components/googleMap/CustomMap";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import { useState } from "react";
+
 function App() {
   const [ip, setIp] = useState<string>("");
   const [details, setDetails] = useState<{
@@ -15,6 +16,7 @@ function App() {
     timezone: "",
     isp: "",
   });
+
   return (
     <>
       <div
