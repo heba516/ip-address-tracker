@@ -3,7 +3,6 @@ import Details from "./Details";
 import CustomMap from "./googleMap/CustomMap";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import { useState } from "react";
-import React from "react";
 
 const Home = () => {
   const [ip, setIp] = useState<string>("");
