@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import React from "react";
 import "./index.css";
 import axios from "axios";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";

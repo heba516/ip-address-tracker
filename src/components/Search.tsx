@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect } from "react";
-import React from "react";
 
 interface Iprops {
   setIp: (ip: string) => void;

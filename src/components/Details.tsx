@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Iprops {
   ip: string;
   details: { country: string; timezone: string; isp: string };
