@@ -1,2 +1,2 @@
 # Ip Address Tracker
-![Ip Address Tracker](https://github.com/heba516/ip-address-tracker/actions/workflows/deploy-vite-project.yml/badge.svg)
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
