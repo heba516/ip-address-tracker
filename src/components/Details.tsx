@@ -7,7 +7,7 @@ const Details = ({ ip, details }: Iprops) => {
   return (
     <div
       className="absolute 
-    top-[41%] sm:top-[46%] md:top-[40%] 
+    top-[45%] md:top-[40%] 
     left-1/2 
     transform -translate-x-1/2 -translate-y-1/2 
     bg-white 
@@ -17,7 +17,7 @@ const Details = ({ ip, details }: Iprops) => {
     z-50 
     flex flex-col md:flex-row items-start justify-between 
     p-4 md:py-8 md:px-16 
-    space-y-2 md:space-y-0"
+    space-y-1 md:space-y-0"
     >
       <div
         className="relative 
