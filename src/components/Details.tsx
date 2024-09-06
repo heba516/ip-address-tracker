@@ -7,7 +7,7 @@ const Details = ({ ip, details }: Iprops) => {
   return (
     <div
       className="absolute 
-    top-[60%] sm:top-[46%] md:top-[40%] 
+    top-[50%] sm:top-[46%] md:top-[40%] 
     left-1/2 
     transform -translate-x-1/2 -translate-y-1/2 
     bg-white 
