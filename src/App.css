@@ -8,3 +8,13 @@
     background-image: url(../images/pattern-bg-desktop.png);
     background-size: cover;
 }
+
+
+.map-container {
+    position: relative;
+}
+.leaflet-control-container {
+    position: absolute;
+    bottom: 55%;
+    left: 0;
+}
